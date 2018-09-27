@@ -13,10 +13,17 @@ import createMathOperation from './.internal/createMathOperation.js'
  * add(6, 4)
  * // => 10
  */
-const add = createMathOperation((augend) =>{
-return (addend)=>{
-  return addend+augend;
-}
+const add = createMathOperation((augend)=> {
+  var sum = augend; 
+   var addNext = (addend)=> {
+   if(addend){
+      sum += addend
+      return addNext
+   }
+    else 
+      return sum;
+  }
+  addNext.toString = () => {return sum }
+  return addNext;
 }, 0)
-
 export default add
